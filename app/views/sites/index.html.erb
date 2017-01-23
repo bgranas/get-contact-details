@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <h1>Listing Sites</h1>
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th></th>
+            <th>URL</th>
+            <th>Email <%= ((@email_p / @sites.length).to_f  * 100).round %>%</th>
+            <th>Facebook <%= ((@facebook_p  / @sites.length).to_f * 100).round %>%</th>
+            <th>Twitter <%= ((@twitter_p  / @sites.length).to_f * 100).round %>%</th>
+            <th>Instagram <%= ((@instagram_p  / @sites.length).to_f * 100).round %>%</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @sites.each_with_index do |site, i| %>
+            <tr>
+              <td><%= i+1 %></td>
+              <td><%= site.url %></td>
+              <td><%= site.email %></td>
+              <td><%= site.facebook %></td>
+              <td><%= site.twitter %></td>
+              <td><%= site.instagram %></td>
+              <td><%= link_to 'Show', site %></td>
+              <td><%= link_to 'Edit', edit_site_path(site) %></td>
+              <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <br>
+
+    <%= link_to 'New Site', new_site_path %>
+  </div>
+</div>
